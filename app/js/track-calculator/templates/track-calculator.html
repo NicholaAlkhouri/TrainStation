@@ -1,0 +1,69 @@
+<div class="wrapper">
+
+    <div class="blockA"
+         id="blockA">
+
+        <div class="train-element raw-element"
+             ng-repeat="element in $ctrl.rawElements"
+             ng-bind="element.name"
+             data-drag="true"
+             data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"
+             jqyoui-draggable="{index: {{$index}}, placeholder: 'keep'}">
+        </div>
+
+    </div>
+
+    <div class="blockB"
+         id="blockB"
+         data-drop="true"
+         jqyoui-droppable="{onDrop: '$ctrl.elementDropped'}"
+         data-jqyoui-options="{accept: '.raw-element'}">
+
+        <div ng-repeat="train in $ctrl.trains">
+            <div class="train-element"
+                 id="{{$ctrl.getElementUnique(element)}}"
+                 ng-style="element.initialPosition"
+                 ng-repeat="element in train.getTrainElements()"
+                 data-drag="true"
+                 jqyoui-draggable="{placeholder:true, animate:true, onDrag: '$ctrl.elementDrag'}"
+                 data-jqyoui-options="{revert: false, containment: '.blockB'}">
+                
+                <p ng-bind="element.name"></p>
+
+                <div class="text-left"
+                     ng-if="$index == 0">
+
+                    <div class="train-element-label">arr:</div>
+                    <div uib-timepicker
+                         class="time-picker-wrapper"
+                         show-spinners="false"
+                         ng-model="train.arrivalDate"></div>
+
+                    <div class="train-element-label">dep:</div>
+                    <div uib-timepicker
+                             class="time-picker-wrapper"
+                             show-spinners="false"
+                             ng-model="train.departureDate"></div>
+                </div>
+
+                <div>
+                    <div class="btn btn-sm btn-primary"
+                         ng-click="$ctrl.connectionClick($event, train, element)">Link</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center">
+        <input type="button"
+               class="btn btn-primary"
+               value="calculate tracks"
+               ng-click="$ctrl.calculateTracks()" />
+
+        <p ng-if="$ctrl.calculationResult"
+           ng-bind="'# of tracks needed: ' + $ctrl.calculationResult"></p>
+    </div>
+
+</div>

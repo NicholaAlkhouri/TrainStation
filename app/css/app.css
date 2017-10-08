@@ -1,0 +1,62 @@
+/* app css stylesheet */
+.wrapper {
+    width: 1000px;
+    height: 500px;
+    max-width: 100%;
+    min-height: 500px;
+    margin: auto;
+    border: 1px solid #444;
+}
+
+.blockA {
+    float: left;
+    width: 25%;
+    height: 100%;
+    background: #ebebeb;
+    padding: 10px;
+}
+
+.blockB {
+    float: left;
+    width: 75%;
+    height: 100%;
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.train-element{
+    padding: 5px;
+    width: 150px;
+    border: 1px solid;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+}
+
+.train-element-label {
+    width: 32px;
+    display: inline-block;
+}
+
+.uib-time input {
+    width: 30px;
+    height: 25px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+}
+
+.uib-time .form-control{
+    padding: 0
+}
+.uib-time .btn {
+    padding: 1px;
+}
+.uib-timepicker td{
+    vertical-align: top;
+}
+.time-picker-wrapper {
+    display: inline-block;
+    vertical-align: top;
+}
